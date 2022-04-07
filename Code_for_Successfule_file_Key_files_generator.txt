@@ -1,0 +1,231 @@
+#!/bin/bash
+start_encryption()
+{
+read -p "Enter your Filename : " file_name
+read -s -p "Enter your Password : " passcodes
+echo "#PasscodeWord_$passcodes" > /tmp/tempp.txt;
+NUMBER=$(xxd -ps /tmp/tempp.txt|sed 's/[^0-9]*//g')
+rm -f /tmp/tempp.txt
+size=${#NUMBER}
+#echo "$size"
+First_Charecter=0
+Second_Charecter=1
+First_Charecter_dup='$_'
+Second_Charecter_dup='$@'
+code=$size
+First_Charecter=${code:0:1}
+Second_Charecter=${code:1:2}
+#echo "$First_Charecter"
+#echo "$Second_Charecter"
+cp $file_name /tmp/tempp_txt.txt
+xxd -ps /tmp/tempp_txt.txt /tmp/tempp1_txt.txt
+sed -i "s/$First_Charecter/$First_Charecter_dup/g;s/$Second_Charecter/$Second_Charecter_dup/g" /tmp/tempp1_txt.txt
+sed -i "s/a/q/g;s/b/r/g;s/c/s/g;s/d/t/g;s/e/u/g;s/f/v/g;s/g/w/g;s/h/x/g;s/i/y/g;s/j/z/g;" /tmp/tempp1_txt.txt
+cp /tmp/tempp1_txt.txt /tmp/Encryption_Level_1.txt
+if [ $First_Charecter -eq 0 ] || [ $Second_Charecter -eq 0 ]
+then
+    sleep 1
+else
+    sed -i "s/0/A/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 1 ] || [ $Second_Charecter -eq 1 ]
+then
+    sleep 1
+else
+    sed -i "s/1/B/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 2 ] || [ $Second_Charecter -eq 2 ]
+then
+    sleep 1
+else
+    sed -i "s/2/C/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 3 ] || [ $Second_Charecter -eq 3 ]
+then
+    sleep 1
+else
+    sed -i "s/3/D/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 4 ] || [ $Second_Charecter -eq 4 ]
+then
+    sleep 1
+else
+    sed -i "s/4/E/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 5 ] || [ $Second_Charecter -eq 5 ]
+then
+    sleep 1
+else
+    sed -i "s/5/F/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 6 ] || [ $Second_Charecter -eq 6 ]
+then
+    sleep 1
+else
+    sed -i "s/6/G/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 7 ] || [ $Second_Charecter -eq 7 ]
+then
+    sleep 1
+else
+    sed -i "s/7/H/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 8 ] || [ $Second_Charecter -eq 8 ]
+then
+    sleep 1
+else
+    sed -i "s/8/I/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 9 ] || [ $Second_Charecter -eq 9 ]
+then
+    sleep 1
+else
+    sed -i "s/9/J/g" /tmp/tempp1_txt.txt
+fi
+cp /tmp/tempp1_txt.txt /tmp/Encryption_Level_2.txt
+rm /tmp/tempp_txt.txt
+mv /tmp/tempp1_txt.txt Encrypted_file.txt
+echo " ";
+echo "your encrypted file is Encrypted_file.txt";
+}
+
+start_decryption()
+{
+read -p "Enter your Filename : " file_name
+read -s -p "Enter your Password : " passcodes
+sleep 2;
+echo "#PasscodeWord_$passcodes" > /tmp/tempp.txt;
+NUMBER=$(xxd -ps /tmp/tempp.txt|sed 's/[^0-9]*//g')
+rm -f /tmp/tempp.txt
+size=${#NUMBER}
+#echo "$size"
+First_Charecter=0
+Second_Charecter=1
+First_Charecter_dup='$_'
+Second_Charecter_dup='$@'
+code=$size
+First_Charecter=${code:0:1}
+Second_Charecter=${code:1:2}
+#echo "$First_Charecter"
+#echo "$Second_Charecter"
+cp $file_name /tmp/tempp1_txt.txt
+sed -i "s/q/a/g;s/r/b/g;s/s/c/g;s/t/d/g;s/u/e/g;s/v/f/g;s/w/g/g;s/x/h/g;s/y/i/g;s/z/j/g;" /tmp/tempp1_txt.txt
+sed -i "s/$Second_Charecter_dup/$Second_Charecter/g;s/$First_Charecter_dup/$First_Charecter/g" /tmp/tempp1_txt.txt
+cp /tmp/tempp1_txt.txt /tmp/Decryption_Level_2.txt
+if [ $First_Charecter -eq 0 ] || [ $Second_Charecter -eq 0 ]
+then
+    sleep 1
+else
+    sed -i "s/A/0/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 1 ] || [ $Second_Charecter -eq 1 ]
+then
+    sleep 1
+else
+    sed -i "s/B/1/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 2 ] || [ $Second_Charecter -eq 2 ]
+then
+    sleep 1
+else
+    sed -i "s/C/2/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 3 ] || [ $Second_Charecter -eq 3 ]
+then
+    sleep 1
+else
+    sed -i "s/D/3/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 4 ] || [ $Second_Charecter -eq 4 ]
+then
+    sleep 1
+else
+    sed -i "s/E/4/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 5 ] || [ $Second_Charecter -eq 5 ]
+then
+    sleep 1
+else
+    sed -i "s/F/5/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 6 ] || [ $Second_Charecter -eq 6 ]
+then
+    sleep 1
+else
+    sed -i "s/G/6/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 7 ] || [ $Second_Charecter -eq 7 ]
+then
+    sleep 1
+else
+    sed -i "s/H/7/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 8 ] || [ $Second_Charecter -eq 8 ]
+then
+    sleep 1
+else
+    sed -i "s/I/8/g" /tmp/tempp1_txt.txt
+fi
+
+if [ $First_Charecter -eq 9 ] || [ $Second_Charecter -eq 9 ]
+then
+    sleep 1
+else
+    sed -i "s/J/9/g" /tmp/tempp1_txt.txt
+fi
+cp /tmp/tempp1_txt.txt /tmp/Decryption_Level_1.txt
+mv /tmp/tempp1_txt.txt /tmp/tempp2_file.txt
+cat /tmp/tempp2_file.txt |xxd -p -r > Decrypted_file.txt
+echo " ";
+echo "your decrypted file is Decrypted_file.txt";
+rm -f /tmp/tempp2_file.txt;
+}
+
+#############################--------------MAIN FUNCTION---------------#############################
+
+
+echo "To do encryption, enter 1..."
+echo "To do decryption, enter 2..."
+echo "To do Exit, enter 3..."
+echo "Enter a number:"
+read num
+ case $num in
+ "1")
+ echo "You have entered 1, for encryption"
+ start_encryption
+ ;;
+
+ "2")
+ echo "You have entered 2, for decryption"
+ start_decryption
+ ;;
+
+ "3")
+ echo "You have entered 3, for exit"
+ sleep 2
+ exit
+ break
+ ;;
+
+ *)
+ echo "your entry does not match any of the conditions"
+ ;;
+
+ esac

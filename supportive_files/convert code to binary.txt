@@ -1,0 +1,16 @@
+xxd -b mykey.txt | cut -d" " -f 2-7 | tr "\n" " " > OUTPUTFILE
+
+
+xxd -b orignialfile.txt | cut -d" " -f 2-7 | tr "\n" " " > OUTPUTFILE
+
+
+od -An -vtx1 OUTPUTFILE > myfile.txt
+
+
+cat OUTPUTFILE |xxd -p -r > myfile.txt
+
+
+brinary to text:
+
+cat OUTPUTFILE | while read -n9 byte; do   echo -ne \\x$( printf '%x' $((2#$byte)) )  >> output.txt   
+done
